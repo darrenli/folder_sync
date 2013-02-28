@@ -20,6 +20,18 @@ $ ruby sync.rb
 
 ## TODO
 
+* deserialize yaml instead of using a parsing a custom file format
+
+```
+# Notes about file
+Synced File:
+  - file1.mov
+  - file2.avi
+Available Files:
+  - file3.mp4
+
+```
+
 * implement syncfile parsing logic
 * implement file synchronization logic
 * implement syncfile updating logic
