@@ -9,14 +9,13 @@ class FolderSync
   ]
 
   def self.synchronize
-    #Dir.chdir(SOURCE)
-    #puts Dir.pwd
-    #puts SOURCE
-    #puts DESTINATION
-    #Dir.entries(SOURCE).each do |entry|
-    #  puts entry
-    #end
+    # delete entries from sync file if files in destination folder are missing
 
+    # parse syncfile
+
+    # make updates to destination folder based parsed syncfile
+
+    # make updates to the sync file based on changes in source files
     self.update_sync_file
   end
 

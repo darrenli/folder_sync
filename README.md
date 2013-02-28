@@ -12,8 +12,12 @@ Will describe this more accurately soon. Initial commit yo!
   * SOURCE
   * DESTINATION
   * SYNCFILE
-  * optionally:
-    * WHITELIST
+  * WHITELIST
 * ruby sync.rb
 
+## TODO
+
+* daemonize ruby script
+* create common.rb and common.example.rb for constants
+* sleep
 
