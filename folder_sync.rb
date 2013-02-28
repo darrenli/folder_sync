@@ -1,12 +1,5 @@
 class FolderSync
-  SOURCE = "/Users/darrencheng/Dropbox/Movies".freeze
-  DESTINATION = "/Users/darrencheng/Desktop/sync/files".freeze
-  SYNC_FILE = "/Users/darrencheng/Desktop/sync/Syncfile"
-  WHITELIST = [
-    /\.mp4/,
-    /\.mov/,
-    /\.avi/
-  ]
+  require './common.rb'
 
   def self.synchronize
     # delete entries from sync file if files in destination folder are missing
@@ -22,11 +15,6 @@ class FolderSync
   private
 
     def self.update_sync_file
-      # create sync file if non-existant
-      unless File.exists?(SYNC_FILE)
-        File.new(SYNC_FILE, File::CREAT, 0644)
-      end
-
       # open file for read / write
       file = File.new(SYNC_FILE, "w+")
 
