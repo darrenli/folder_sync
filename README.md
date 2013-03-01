@@ -6,6 +6,13 @@ The goal of this is to provide an easy way for a user to synchronize files from 
 
 Will describe this more accurately soon. Initial commit yo!
 
+## Preparation
+
+```
+$ bundle install
+$ ./test/prepare.sh
+```
+
 ## Run
 
 * Modify the following constants:
@@ -15,8 +22,7 @@ Will describe this more accurately soon. Initial commit yo!
   * WHITELIST
 
 ```
-$ bundle install
-$ bundle exec ruby sync.rb
+$ ./run.sh
 ```
 
 ## TODO
@@ -43,5 +49,5 @@ Available Files:
 
 ## Links
 
-[Guard Gem](https://github.com/guard/guard)
 [Bundler](http://gembundler.com)
+[Guard Gem](https://github.com/guard/guard)
