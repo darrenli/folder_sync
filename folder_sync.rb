@@ -43,11 +43,25 @@ class Syncfile
 end
 
 class SourceDirectory
-
+  def self.files
+    Dir.entries(SOURCE).inject([]) do |entries, entry|
+      # filter out files not whitelisted
+      unless WHITELIST.inject(false){|val,x| val = val || !!entry.match(x)}
+        entries << entry
+      end
+    end
+  end
 end
 
 class DestinationDirectory
-
+  def self.files
+    Dir.entries(DESTINATION).inject([]) do |entries, entry|
+      # filter out files not whitelisted
+      unless WHITELIST.inject(false){|val,x| val = val || !!entry.match(x)}
+        entries << entry
+      end
+    end
+  end
 end
 
 class FolderSync
