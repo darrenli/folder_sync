@@ -15,7 +15,8 @@ Will describe this more accurately soon. Initial commit yo!
   * WHITELIST
 
 ```
-$ ruby sync.rb
+$ bundle install
+$ bundle exec ruby sync.rb
 ```
 
 ## TODO
@@ -35,7 +36,6 @@ Available Files:
 * implement syncfile parsing logic
 * implement file synchronization logic
 * implement syncfile updating logic
-* use bundler for gem install
 * write tests
 * daemonize ruby script
 * monitor file system changes via Guard gem
