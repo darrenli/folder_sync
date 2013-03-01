@@ -1,6 +1,56 @@
-class FolderSync
+# Syncfile should be in the following format:
+#   Synced Files:
+#     - file1.mov
+#     - file2.avi
+#   Available Files:
+#     - file3.mp4
+
+class Syncfile
+  require 'yaml'
   require './common.rb'
 
+  SYNCED = "Synced Files:"
+  UNSYNCED = "Available Files:"
+
+  def self.generate
+    data = {
+      SYNCED => [],
+      UNSYNCED => []
+    }
+
+    Dir.entries(SOURCE).each do |entry|
+      # skip entry if not matched in whitelist
+      next unless WHITELIST.inject(false){|val,x| val = val || !!entry.match(x)}
+      data[UNSYNCED] << entry
+    end
+
+    return data
+  end
+
+  def self.read
+    begin
+      YAML.load_file(SYNCFILE)
+    rescue => e
+      puts "Error: #{e.message}"
+    end
+  end
+
+  def self.write(data)
+    File.open(SYNCFILE, "w+") do |syncfile|
+      syncfile.write(data.to_yaml)
+    end
+  end
+end
+
+class SourceDirectory
+
+end
+
+class DestinationDirectory
+
+end
+
+class FolderSync
   def self.synchronize
     # delete entries from sync file if files in destination folder are missing
 
@@ -9,21 +59,10 @@ class FolderSync
     # make updates to destination folder based parsed syncfile
 
     # make updates to the sync file based on changes in source files
-    self.update_sync_file
+    #self.update_sync_file
+    syncdata = Syncfile.generate
+    Syncfile.write(syncdata)
+    puts Syncfile.read.inspect
   end
-
-  private
-
-    def self.update_sync_file
-      # open file for read / write
-      file = File.new(SYNC_FILE, "w+")
-
-      Dir.entries(SOURCE).each do |entry|
-        # skip entry if not matched in whitelist
-        next unless WHITELIST.inject(false){|val,x| val = val || !!entry.match(x)}
-
-        file.write("#{entry}\n")
-      end
-    end
 
 end
