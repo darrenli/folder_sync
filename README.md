@@ -51,6 +51,7 @@ Available Files:
 
 * [Bundler](http://gembundler.com)
 * [Guard Gem](https://github.com/guard/guard)
+* [Listen Gem](https://github.com/guard/listen)
 * [Daemons Gems](http://daemons.rubyforge.org/)
 * [Daemon Processes](http://www.jstorimer.com/2012/04/19/daemon-processes-in-ruby.html)
 * [Launch Daemons](http://snippets.aktagon.com/snippets/212-How-to-create-a-daemon-process-using-Ruby-and-the-daemons-RubyGem)

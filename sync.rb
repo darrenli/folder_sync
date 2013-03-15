@@ -1,2 +1,2 @@
 require './folder_sync.rb'
-FolderSync.synchronize
+FolderSync.new

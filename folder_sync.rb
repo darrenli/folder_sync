@@ -69,21 +69,38 @@ class TargetDirectory
 end
 
 class FolderSync
-  def self.synchronize
-    # delete entries from sync file if files in destination folder are missing
+  require 'listen'
 
-    # parse syncfile
-
-    # make updates to destination folder based parsed syncfile
-
-    # make updates to the sync file based on changes in source files
-    #self.update_sync_file
-    syncdata = Syncfile.generate
-    Syncfile.write(syncdata)
-    puts Syncfile.read.inspect
-
-    puts SourceDirectory.files.inspect
-    puts TargetDirectory.files.inspect
+  def initialize
+    Listen.to(SOURCE) do |modified, added, removed|
+      puts "listening #{modified} #{added} #{removed}"
+      if !added.empty? && !removed.empty?
+        puts "added & removed: #{added} #{removed}"
+      elsif !added.empty?
+        puts "added: #{added}"
+      elsif !removed.empty?
+        puts "removed: #{removed}"
+      end
+    end
   end
+
+
+
+#  def self.synchronize
+#    # delete entries from sync file if files in destination folder are missing
+#
+#    # parse syncfile
+#
+#    # make updates to destination folder based parsed syncfile
+#
+#    # make updates to the sync file based on changes in source files
+#    #self.update_sync_file
+#    syncdata = Syncfile.generate
+#    Syncfile.write(syncdata)
+#    puts Syncfile.read.inspect
+#
+#    puts SourceDirectory.files.inspect
+#    puts TargetDirectory.files.inspect
+#  end
 
 end
